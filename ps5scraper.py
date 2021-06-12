@@ -27,6 +27,8 @@ class Stockr:
     def __init__(self):
         chrome_options = Options()
         chrome_options.add_argument(" — incognito")
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument("--headless") 
         self.driver = webdriver.Chrome(executable_path='D:/python_programs/chromedriver_win32/chromedriver.exe')
         self.timeout=30
     
@@ -89,15 +91,15 @@ def main():
     S=Stockr()
 
     if (S.target(targetTest_link)=='In Stock'):
-        push.show_toast(title="Target works", message="Deliver found")
+        push.show_toast(title="Target works")
     else:
         print('Target doesnt work')
     if (S.BestBuy(bestbuyTest_link)=='In Stock'):
-        push.show_toast(title="Bestbuy works", message = "ADD TO CART found")
+        push.show_toast(title="Bestbuy works")
     else:
         print('BB Doesnt work')
     if (S.gameStop(gameStopTest_link)=='In Stock'):
-        push.show_toast(title="Gamestop works", message = "ADD TO CART found")
+        push.show_toast(title="Gamestop works")
     else:
         print('Gamestop doesnt work')
     
@@ -106,15 +108,15 @@ def main():
         print('Current Run Time: ',datetime.now())
 
         if (S.BestBuy(bestbuy_link)=='In Stock'):
-            push.show_toast(title="Stock at bestbuy", message = "GO GET IT!")
+            push.show_toast(title="Stock at bestbuy")
         else:
             print('No BestBuy')
         if (S.gameStop(gameStop_link)=='In Stock'):
-            push.show_toast(title="Stock at Gamestop", message = "GO GET IT!")
+            push.show_toast(title="Stock at Gamestop")
         else:
             print('No Gamestop')
         if (S.target(target_link)=='In Stock'):
-            push.show_toast(title="Stock at Target", message="GO GET IT!")
+            push.show_toast(title="Stock at Target")
         else:
             print('No Target')
 #		if (S.newegg(newegg_link)=='In Stock'):
